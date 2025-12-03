@@ -12,24 +12,53 @@ CPUキャッシュ効率の最適化と、内部ループでのアロケーシ�
 - **安全**: `unsafe` ブロックを使用しない純粋な Rust 実装です。
 - **シンプル**: 32ビット整数に最適化された、固定256基数・4パスのアルゴリズムです。
 
-## インストール
+## 導入手順 (Getting Started)
 
-### Rust
+### 前提条件
+- Rust (最新の安定版)
+- Python 3.7以上 (Pythonバインディング用)
 
-`Cargo.toml` に以下を追加してください:
-
-```toml
-[dependencies]
-radix256_sort = { path = "path/to/radix256_sort" } # 現在はローカルパス指定
+### 1. リポジトリのクローン
+```bash
+git clone https://github.com/tanep3/radix256Sort.git
+cd radix256Sort
 ```
 
-### Python
+### 2. Rust: テストとベンチマークの実行
+ユニットテストの実行:
+```bash
+cargo test --workspace
+```
 
-ビルドには `maturin` が必要です。
+マイクロベンチマーク (Criterion) の実行:
+```bash
+cargo bench -p radix256_sort
+```
+*結果は `target/criterion/report/index.html` にグラフィカルなレポートとして生成されます。*
+
+マクロベンチマーク (1億件) の実行:
+```bash
+cargo run --release -p rust_bench
+```
+
+### 3. Python: ビルドとベンチマークの実行
+仮想環境の使用を推奨します。
 
 ```bash
-pip install maturin
+# 仮想環境の作成と有効化
+python3 -m venv .venv
+source .venv/bin/activate
+
+# ビルドツールのインストール
+pip install maturin numpy
+
+# ライブラリのビルドとインストール
+cd radix256_sort_py
 maturin develop --release
+cd ..
+
+# ベンチマークの実行
+python benchmarks/python_bench/bench.py
 ```
 
 ## 使い方
@@ -71,6 +100,12 @@ print(sorted_data) # [1, 2, 5, 5, 9]
 > [!NOTE]
 > 以下の数値は開発環境での参考値です。環境により性能は変動します。
 
+
+### 凡例 (Legend)
+- **`radix256_sort_vec`**: 本ライブラリ (バッファ版) - **最速**
+- **`radix256_sort_inplace`**: 本ライブラリ (インプレース版)
+- **`std_sort`**: Rust標準 (安定ソート) - 比較対象
+- **`std_sort_unstable`**: Rust標準 (不安定ソート) - 参考比較
 
 ### Rust
 

@@ -12,24 +12,53 @@ Optimized for CPU cache efficiency and zero-allocation (internal loop) strategy.
 - **Safe**: Pure Rust implementation without `unsafe` blocks.
 - **Simple**: Fixed 256-base, 4-pass algorithm optimized for 32-bit integers.
 
-## Installation
+## Getting Started
 
-### Rust
+### Prerequisites
+- Rust (latest stable)
+- Python 3.7+ (for Python bindings)
 
-Add this to your `Cargo.toml`:
-
-```toml
-[dependencies]
-radix256_sort = { path = "path/to/radix256_sort" } # Currently local
+### 1. Clone the Repository
+```bash
+git clone https://github.com/tanep3/radix256Sort.git
+cd radix256Sort
 ```
 
-### Python
+### 2. Rust: Run Tests & Benchmarks
+Run unit tests:
+```bash
+cargo test --workspace
+```
 
-Requires `maturin` to build.
+Run micro-benchmarks (Criterion):
+```bash
+cargo bench -p radix256_sort
+```
+*Results will be generated at `target/criterion/report/index.html`.*
+
+Run macro-benchmarks (100M items):
+```bash
+cargo run --release -p rust_bench
+```
+
+### 3. Python: Build & Run Benchmarks
+It is recommended to use a virtual environment.
 
 ```bash
-pip install maturin
+# Create and activate virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Install build tools
+pip install maturin numpy
+
+# Build and install the library
+cd radix256_sort_py
 maturin develop --release
+cd ..
+
+# Run benchmarks
+python benchmarks/python_bench/bench.py
 ```
 
 ## Usage
@@ -71,6 +100,12 @@ Performance measured on 100,000,000 (100M) random `u32` integers.
 > [!NOTE]
 > The following figures are reference values from a development environment. Performance may vary depending on the system.
 
+
+### Legend
+- **`radix256_sort_vec`**: This library (Buffer version) - **Fastest**
+- **`radix256_sort_inplace`**: This library (In-place version)
+- **`std_sort`**: Rust standard stable sort (Comparison target)
+- **`std_sort_unstable`**: Rust standard unstable sort (Reference)
 
 ### Rust
 
