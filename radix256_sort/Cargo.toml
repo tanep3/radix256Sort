@@ -3,6 +3,7 @@ name = "radix256_sort"
 version = "0.1.0"
 edition = "2021"
 description = "A high-performance Radix Sort implementation using base-256 for u32."
+authors = ["Tane Channel Technology"]
 license = "Apache-2.0"
 
 [dependencies]

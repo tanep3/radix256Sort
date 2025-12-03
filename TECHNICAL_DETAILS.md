@@ -31,7 +31,7 @@ By properly managing `Vec` and slice ownership, we let the compiler guarantee me
 
 ### 6. Proof of "Raw Array Acceleration" via PyO3
 In the Python binding, we use PyO3 to bring Rust's speed directly into the Python world.
-By directly handling the internal data of Python `list` or `numpy` arrays, we avoid interpreter overhead and provide pure native code speed. This serves as a prime educational example of "speeding up Python with Rust".
+Python lists are efficiently converted to Rust `Vec`s and processed natively. While direct memory access is possible for NumPy arrays (if implemented), this implementation serves as a prime educational example of the structural speed advantages of Rust over Python.
 
 ## Algorithm Principle (LSD Radix Sort)
 
@@ -41,4 +41,4 @@ By directly handling the internal data of Python `list` or `numpy` arrays, we av
     *   **Accumulate**: Calculate the prefix sum of counts to determine the write start position for each bucket.
     *   **Reorder**: Rescan the input array and write values to the buffer according to the calculated positions.
     *   **Swap**: Swap the roles of the input array and the buffer.
-3.  **Completion**: After the 4th pass, the data exists in a sorted state in the original array (or buffer). Since this implementation performs an even number of passes, the result always returns to the original array storage area.
+3.  **Completion**: After the final pass, the data resides in either the original array or the buffer depending on the swap order. This implementation is designed to correctly return the result regardless of where it ends up.

@@ -68,6 +68,10 @@ print(sorted_data) # [1, 2, 5, 5, 9]
 
 Performance measured on 100,000,000 (100M) random `u32` integers.
 
+> [!NOTE]
+> The following figures are reference values from a development environment. Performance may vary depending on the system.
+
+
 ### Rust
 
 | Algorithm | Time (s) | Speedup |
@@ -95,3 +99,6 @@ For detailed technical explanation of why this is so fast, see [Technical Detail
 ## License
 
 Apache License 2.0
+
+Copyright (c) 2025 Tane Channel Technology
+

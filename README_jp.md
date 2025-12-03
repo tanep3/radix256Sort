@@ -68,6 +68,10 @@ print(sorted_data) # [1, 2, 5, 5, 9]
 
 1億個 (100M) のランダムな `u32` 整数に対する計測結果です。
 
+> [!NOTE]
+> 以下の数値は開発環境での参考値です。環境により性能は変動します。
+
+
 ### Rust
 
 | アルゴリズム | 時間 (秒) | 高速化率 |
@@ -95,3 +99,6 @@ print(sorted_data) # [1, 2, 5, 5, 9]
 ## ライセンス
 
 Apache License 2.0
+
+Copyright (c) 2025 Tane Channel Technology
+
