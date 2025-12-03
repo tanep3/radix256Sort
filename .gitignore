@@ -9,6 +9,7 @@ venv/
 ENV/
 env/
 .uv/
+.pytest_cache/
 
 # Node.js
 node_modules/
@@ -23,6 +24,7 @@ yarn-error.log*
 /target/
 /Cargo.lock
 pkg/
+**/*.rs.bk
 
 # 共通
 .vscode/
@@ -33,6 +35,7 @@ Thumbs.db
 *.log
 *.tmp
 *.swp
+*.so
 
 # 環境変数（※.env は ignore、env.exampleをコピーして使う）
 .env
