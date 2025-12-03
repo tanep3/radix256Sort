@@ -1,0 +1,16 @@
+[package]
+name = "radix256_sort"
+version = "0.1.0"
+edition = "2021"
+description = "A high-performance Radix Sort implementation using base-256 for u32."
+license = "Apache-2.0"
+
+[dependencies]
+
+[dev-dependencies]
+criterion = "0.5"
+rand = "0.8"
+
+[[bench]]
+name = "benchmark"
+harness = false

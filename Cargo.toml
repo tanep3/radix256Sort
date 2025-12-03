@@ -1,0 +1,7 @@
+[workspace]
+members = [
+    "radix256_sort",
+    "radix256_sort_py",
+    "benchmarks/rust_bench",
+]
+resolver = "2"

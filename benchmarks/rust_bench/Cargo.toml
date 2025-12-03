@@ -1,0 +1,8 @@
+[package]
+name = "rust_bench"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+radix256_sort = { path = "../../radix256_sort" }
+rand = "0.8"
