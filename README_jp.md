@@ -14,11 +14,28 @@ CPUキャッシュ効率の最適化と、内部ループでのアロケーシ�
 
 ## 導入手順 (Getting Started)
 
-### 前提条件
+### Crates.io からのインストール
+
+`Cargo.toml` に以下を追加してください:
+
+```toml
+[dependencies]
+radix256_sort = "0.1.0"
+```
+
+または `cargo add` を使用:
+
+```bash
+cargo add radix256_sort
+```
+
+### ソースからビルド
+
+#### 前提条件
 - Rust (最新の安定版)
 - Python 3.7以上 (Pythonバインディング用)
 
-### 1. リポジトリのクローン
+#### 1. リポジトリのクローン
 ```bash
 git clone https://github.com/tanep3/radix256Sort.git
 cd radix256Sort

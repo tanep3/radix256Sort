@@ -14,11 +14,28 @@ Optimized for CPU cache efficiency and zero-allocation (internal loop) strategy.
 
 ## Getting Started
 
-### Prerequisites
+### Installation from Crates.io
+
+Add this to your `Cargo.toml`:
+
+```toml
+[dependencies]
+radix256_sort = "0.1.0"
+```
+
+Or use `cargo add`:
+
+```bash
+cargo add radix256_sort
+```
+
+### Building from Source
+
+#### Prerequisites
 - Rust (latest stable)
 - Python 3.7+ (for Python bindings)
 
-### 1. Clone the Repository
+#### 1. Clone the Repository
 ```bash
 git clone https://github.com/tanep3/radix256Sort.git
 cd radix256Sort
