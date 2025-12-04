@@ -5,6 +5,12 @@ edition = "2021"
 description = "A high-performance Radix Sort implementation using base-256 for u32."
 authors = ["Tane Channel Technology"]
 license = "Apache-2.0"
+repository = "https://github.com/tanep3/radix256Sort"
+homepage = "https://github.com/tanep3/radix256Sort"
+documentation = "https://docs.rs/radix256_sort"
+readme = "../README.md"
+keywords = ["sort", "radix", "algorithm", "performance"]
+categories = ["algorithms", "data-structures"]
 
 [dependencies]
 
