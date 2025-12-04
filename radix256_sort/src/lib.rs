@@ -91,8 +91,8 @@ pub fn radix256_sort_inplace(list: &mut [u32]) {
     }
 
     let mut buffer = vec![0u32; len];
-    let mut from = &*list; // Initial read from list
-    let mut to = &mut *buffer; // Initial write to buffer
+    
+    // We ping-pong between list and buffer for each pass
     
     // Wait, we can't easily swap references to a slice and a vec's slice if one is borrowed from the argument.
     // We need two mutable slices.
@@ -156,7 +156,7 @@ mod tests {
     #[test]
     fn test_radix256_sort_vec() {
         let mut rng = rand::thread_rng();
-        let mut v: Vec<u32> = (0..1000).map(|_| rng.gen()).collect();
+        let v: Vec<u32> = (0..1000).map(|_| rng.gen()).collect();
         let mut expected = v.clone();
         expected.sort();
         
